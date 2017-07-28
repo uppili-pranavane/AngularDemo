@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="MyModule">   <!-- initialing the Module MyModule in the head  -->
+<head>
+    <title></title>
+    <script src="Scripts/angular.js"></script>                           
+    <script src="Scripts/Script.js"></script>
+</head>
+<body >
+    <table ng-controller="MyController">
+        <thead>
+            <tr>
+                <td>name</td>
+                <td>Designation</td>
+                <td>Date Of Joining</td>
+                <td>Salary</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="emp in employees">
+                <td>{{emp.name}}</td>
+                <td>{{emp.Designation}}</td>
+                <td>{{emp.DateOfJoining}}</td>
+                <td>{{emp.Salary}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <div ng-controller="MyController1">
+        <ul ng-repeat="country in countries">
+            {{country.name}}
+            <li ng-repeat="city in country.City">
+                {{city.name}}
+            </li>
+
+        </ul>
+
+    </div>
+</body>
+</html>
