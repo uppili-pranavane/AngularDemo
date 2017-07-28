@@ -2,34 +2,92 @@
 <html xmlns="http://www.w3.org/1999/xhtml" ng-app="MyModule">   <!-- initialing the Module MyModule in the head  -->
 <head>
     <title></title>
-    <script src="Scripts/angular.js"></script>                           
-    <script src="Scripts/Script.js"></script>
+    <script src="Scripts/angular.js"></script>                        <!--including the angular-->    
+    <script src="Scripts/Script.js"></script>                          <!--including the external script file-->
 </head>
 <body >
-    <table ng-controller="MyController">
-        <thead>
+
+
+
+    <!-- Implementing the two way data binding function -->
+    <div ng-controller="MyController2">
+        <table>
             <tr>
-                <td>name</td>
-                <td>Designation</td>
-                <td>Date Of Joining</td>
-                <td>Salary</td>
+                <td>First Name :</td>
+                <td> <input type="text" ng-model="employees.name" /> </td>
             </tr>
-        </thead>
-        <tbody>
-            <tr ng-repeat="emp in employees">
-                <td>{{emp.name}}</td>
-                <td>{{emp.Designation}}</td>
-                <td>{{emp.DateOfJoining}}</td>
-                <td>{{emp.Salary}}</td>
+            <tr>
+                <td>Designation :</td>
+                <td> <input type="text" ng-model="employees.designation" /> </td>
             </tr>
-        </tbody>
-    </table>
+            <tr>
+                <td>]Date of Joining :</td>
+                <td> <input type="text" ng-model="employees.date" /> </td>
+            </tr>
+            <tr>
+                <td>Salary :</td>
+                <td> <input type="number" ng-model="employees.salary" /> </td>
+            </tr>
+
+        </table>
+
+        <br /><br /><br />
+        <table>
+            <tr>
+                <td>First Name :</td>
+                <td> {{employees.name}}</td>
+            </tr>
+            <tr>
+                <td>Designation :</td>
+                <td> {{employees.designation}}</td>
+            </tr>
+            <tr>
+                <td>Date of Joining :</td>
+                <td> {{employees.date}}</td>
+            </tr>
+            <tr>
+                <td>Salary :</td>
+                <td> {{employees.salary}}</td>
+            </tr>
+
+        </table>
+    </div>
+        <br /><br /><br />
 
 
-    <div ng-controller="MyController1">
-        <ul ng-repeat="country in countries">
+        <table ng-controller="MyController">
+                                                    <!--initialioxing the MyController controller of the angular in the html
+                                                 specifically to the region inside the table-->
+            <thead>
+                <tr>
+                    <td>name</td>
+                    <td>Designation</td>
+                    <td>Date Of Joining</td>
+                    <td>Salary</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="emp in employees">
+                                                        <!--using the repeat function to loop inside the datas in an array-->
+                    <td>{{emp.name}}</td>
+                    <td>{{emp.Designation}}</td>
+                    <td>{{emp.DateOfJoining}}</td>
+                    <td>{{emp.Salary}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+   
+
+
+    <div ng-controller="MyController1">            <!--initialioxing the MyController1 controller of the angular in the html
+                                                     specifically to the region inside the div tag-->
+
+
+
+        <ul ng-repeat="country in countries">         <!--using the repeat function to loop inside the datas in an array-->
             {{country.name}}
-            <li ng-repeat="city in country.City">
+            <li ng-repeat="city in country.City">       <!--to loop the datas of an array insid an array-->
                 {{city.name}}
             </li>
 
