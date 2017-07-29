@@ -45,6 +45,8 @@ $scope.employees = employees;       //since the variable decleared is private ma
                             
                 });
 
+
+
 app.controller ("MyController1",function($scope) {            //registering another controlle MyController1 to the app
     var countries =                                           // to demontrate the array within a array                          
         [
@@ -71,10 +73,34 @@ app.controller ("MyController1",function($scope) {            //registering anot
     $scope.countries = countries;   // making the countries array as public
 });
 
+
+
 app.controller("MyController2", function ($scope) {
     var employees = {
 
         name: "Uppili", designation: "Senior Engineer", date: "June 14, 2017", salary: 500000
     };
     $scope.employees = employees;    
+});
+
+
+
+app.controller("HandlingEvent", function ($scope) {
+    var technologies = [
+        { name: "C#", like: 0, dislike: 0 },
+        { name: "C", like: 0, dislike: 0 },
+        { name: "C++", like: 0, dislike: 0 },
+        { name: ".Net", like: 0, dislike: 0 }
+    ];
+
+    $scope.technologies = technologies;
+
+    $scope.incrementlike = function (technology) {
+        technology.like++;
+    }
+
+    $scope.incrementdislike = function (technology) {
+        technology.dislike++;
+    }
+
 });
