@@ -4,6 +4,7 @@
     <title></title>
     <script src="Scripts/angular.js"></script>                         <!--including the angular-->    
     <script src="Scripts/Script.js"></script>  <!--including the external script file-->
+    <script src="Scripts/Filters.js"></script>   <!--including the filter js file which we created for custom filter-->
     <link href="Style.css" rel="stylesheet" />      
                       
 </head>
@@ -11,7 +12,11 @@
 
     <!--<h1>AngularJS play Ground</h1>-->
 
+
     <!--Implementing the filers in Angular-->
+    <!--Implementing Sorting-->
+    <!--Implementing Search-->
+    <!--Implementing Custom Filters Filter.js-->
     <div ng-controller="AngularFilters">
 
 
@@ -69,7 +74,7 @@
                         <!--to sort the datas in the table according to the input given orderBy-->
 
                         <td>{{emp.name | uppercase}}</td>                       <!--converts ti UPPER CASE-->
-                        <td>{{emp.gender | lowercase}}</td>                     <!--converts to lowerr case-->
+                        <td>{{emp.gender | gender | lowercase}}</td>    <!--including gender the custom filter we creaed in filter.js--> <!--converts to lowerr case-->
                         <td>{{emp.Salary | number:2}}</td>                      <!--convert the decimals to two decimal places-->
 
                         <td>{{emp.Salary | currency:"Rs. ": 1}}</td>
