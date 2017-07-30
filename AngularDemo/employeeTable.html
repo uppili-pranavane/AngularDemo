@@ -1,0 +1,18 @@
+﻿<table border="1">
+    <thead>
+        <tr>
+            <th>name</th>
+            <!--<th>gender</th>-->
+            <td>salary</td>
+            <td>dateofbirth</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="emp in emp">
+            <td>{{emp.name}}</td>
+            <!--<td>{{emp.gender | gender}}</td>-->
+            <td>{{emp.Salary}}</td>
+            <td>{{emp.dateofbirth | date: "dd/ MMM / yyyy"}}</td>
+        </tr>
+    </tbody>
+</table>  

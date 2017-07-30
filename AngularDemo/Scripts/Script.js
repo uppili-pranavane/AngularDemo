@@ -146,3 +146,21 @@ app.controller("AngularFilters", function ($scope) {
 
 });
 
+app.controller("ngInclude", function ($scope) {
+    var employee = [
+        { name: "Uppili", gender: 1, Salary: 500000.789, dateofbirth: new Date("August 19, 1996") },
+        { name: "tamil", gender: 1, Salary: 600000, dateofbirth: new Date("April 19, 1996") },
+        { name: "Niatai", gender: 1, Salary: 300000, dateofbirth: new Date("June 19, 1996") },
+        { name: "Saravanan", gender: 1, Salary: 200000, dateofbirth: new Date("May 19, 1996") },
+        { name: "kavitha", gender: 2, Salary: 90000, dateofbirth: new Date("March 19, 1996") },
+        { name: "Balaji", gender: 1, Salary: 400000, dateofbirth: new Date("December 19, 1996") },
+        { name: "JP", gender: 1, Salary: 50000, dateofbirth: new Date("January 19, 1996") },
+        { name: "Sparsh", gender: 1, Salary: 550000, dateofbirth: new Date("February 19, 1996") }
+
+    ];
+
+    $scope.emp = employee;
+    $scope.selectView= 'employeeTable.html'
+});
+
+

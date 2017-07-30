@@ -12,12 +12,29 @@
 
     <!--<h1>AngularJS play Ground</h1>-->
 
+    <!--Implementing ng-include directive in Angular-->
+    <div ng-controller="ngInclude">
+        <!--<div ng-include="'employeeTable.html'">-->
+            <!--this should be initialized in the script controller as $scope.employeeTable='employeeTable'-->
+            <!--and then used here as < div ng-include="employeeTable"> but here we are directly using in the html page-->
+        
+        Select View : <select ng-model="selectView">
+        <option value="employeeTable.html">Table View</option>
+                          <option value="employeeList.html">List View</option>
+        </select>
+
+        <div ng-include="selectView">
+
+        </div>
+    </div>
+
 
     <!--Implementing the filers in Angular-->
     <!--Implementing Sorting-->
     <!--Implementing Search-->
     <!--Implementing Custom Filters Filter.js-->
     <!--genderfilter-->
+
     <div ng-controller="AngularFilters">
 
 
@@ -182,7 +199,7 @@
     </div>
     <br /><br /><br />
 
-
+   
     <table ng-controller="Table">
         <!--initialioxing the MyController controller of the angular in the html
         specifically to the region inside the table-->

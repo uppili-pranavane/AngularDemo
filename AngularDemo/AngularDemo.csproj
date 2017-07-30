@@ -65,6 +65,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="employeeList.html" />
+    <Content Include="employeeTable.html" />
     <Content Include="HtmlPage1.html" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\Filters.js" />
