@@ -17,11 +17,16 @@
     <!--Implementing Sorting-->
     <!--Implementing Search-->
     <!--Implementing Custom Filters Filter.js-->
+    <!--genderfilter-->
     <div ng-controller="AngularFilters">
 
 
         <center>
-            Seacrh by value : <input type="text" placeholder=" Universal search" ng-model="searchTerm"/>              <!--fro universal search-->
+
+            Seacrh by value : <input type="text" placeholder=" Universal search" ng-model="searchTerm"/>   <!--fro universal search-->  
+            <input type="checkbox" ng-model="hideGender" /> Hide Gender      <!--for ng-hide-->  
+            <input type="checkbox" ng-model="Birth" /> show Date of Birth    <!--for ng-hide-->
+                                                                                                                     
             <br /> <br/>
            <!-- Search By Name :  <input type="text" placeholder="search by name" ng-model="searchTerm.name" />-->    <!--to to search by a specific column do so SearchTerm.column_name-->
             <br /><br />
@@ -53,8 +58,11 @@
                         <th ng-click="sortData('name')">
                             name <div ng-class="getSortClass('name')"></div>
                         </th>
-                        <th ng-click="sortData('gender')">
-                        gender <div ng-class="getSortClass('gender')"></div>
+                        <th ng-click="sortData('gender')" ng-hide="hideGender">
+                            gender <div ng-class="getSortClass('gender')"></div>
+                        </th>
+                        <th ng-click="sortData('gender')" ng-show="hideGender">
+                            gender <div ng-class="getSortClass('gender')"></div>
                         </th>
                         <th>
                         salary (number filter)
@@ -62,7 +70,7 @@
                         <th ng-click="sortData('Salary')">
                         salary (currency filter) <div ng-class="getSortClass('Salary')"></div>
                         </th>
-                        <th ng-click="sortData('dateofbirth')">
+                        <th ng-click="sortData('dateofbirth')" ng-show="Birth">
                             Date Of Birth <div ng-class="getSortClass('dateofbirth')"></div>
                         </th>   
                     </tr>
@@ -74,14 +82,19 @@
                         <!--to sort the datas in the table according to the input given orderBy-->
 
                         <td>{{emp.name | uppercase}}</td>                       <!--converts ti UPPER CASE-->
-                        <td>{{emp.gender | gender | lowercase}}</td>    <!--including gender the custom filter we creaed in filter.js--> <!--converts to lowerr case-->
+                        <td ng-hide="hideGender">{{emp.gender | genderfilter | lowercase}}</td>    <!--including gender the custom filter we creaed in filter.js named genderfilter--> <!--converts to lowerr case-->
+                        
+                        
+                        <td ng-show="hideGender">  ####  </td>   
+                        
+                        
                         <td>{{emp.Salary | number:2}}</td>                      <!--convert the decimals to two decimal places-->
 
                         <td>{{emp.Salary | currency:"Rs. ": 1}}</td>
                         <!--by default the currency symboml is $- doalr so we set our custom currency
         by default the decimal placed for the currency filter is 2 so we are setting it to one-->
 
-                        <td>{{emp.dateofbirth | date: "dd/ MMM / yyyy"}}</td>
+                        <td ng-show="Birth">{{emp.dateofbirth | date: "dd/ MMM / yyyy"}}</td>
                         <!--by default the date also includes the time stamp also
         date filter and its custom format can be used to customise the view-->
 

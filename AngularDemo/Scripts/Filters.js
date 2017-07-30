@@ -1,6 +1,8 @@
 ﻿/// <reference path="Script.js" />
 
-app.filter("gender", function () {
+// a filter is a function which returns another function
+
+app.filter("genderfilter", function () {
     return function (gender)
     {
         switch(gender)
@@ -14,3 +16,4 @@ app.filter("gender", function () {
         }
 }
 })
+
