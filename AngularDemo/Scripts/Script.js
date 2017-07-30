@@ -26,7 +26,7 @@ var app = angular.module("MyModule", []);         //declearing the module MyModu
 
 
 
-app.controller("MyController", function ($scope)   //app.controller function is used to link the controller with the module in the app, 
+app.controller("Table", function ($scope)   //app.controller function is used to link the controller with the module in the app, 
                                                    //the controller name is MyController and the defeniotion of the function goes after function($scope)
                 
                 {
@@ -45,9 +45,7 @@ $scope.employees = employees;       //since the variable decleared is private ma
                             
                 });
 
-
-
-app.controller ("MyController1",function($scope) {            //registering another controlle MyController1 to the app
+app.controller ("NestedArrays",function($scope) {            //registering another controlle MyController1 to the app
     var countries =                                           // to demontrate the array within a array                          
         [
            { name : "India" ,
@@ -73,17 +71,13 @@ app.controller ("MyController1",function($scope) {            //registering anot
     $scope.countries = countries;   // making the countries array as public
 });
 
-
-
-app.controller("MyController2", function ($scope) {
+app.controller("TwoWayDataBinding", function ($scope) {
     var employees = {
 
         name: "Uppili", designation: "Senior Engineer", date: "June 14, 2017", salary: 500000
     };
     $scope.employees = employees;    
 });
-
-
 
 app.controller("HandlingEvent", function ($scope) {
     var technologies = [
@@ -103,4 +97,25 @@ app.controller("HandlingEvent", function ($scope) {
         technology.dislike++;
     }
 
+    $scope.resetlikeAndDislike = function (technology) {
+        technology.like = 0;
+        technology.dislike = 0;
+    }
+
 });
+
+app.controller("AngularFilters", function ($scope) {
+    var employee = [
+        { name: "Uppili", gender: "Male", Salary: 500000.789, dateofbirth: new Date("August 19, 1996") },
+        { name: "tamil", gender: "Male", Salary: 600000, dateofbirth: new Date("April 19, 1996") },
+        { name: "Niatai", gender: "Male", Salary: 300000, dateofbirth: new Date("June 19, 1996") },
+        { name: "Saravanan", gender: "Male", Salary: 200000, dateofbirth: new Date("May 19, 1996") },
+        { name: "kavitha", gender: "Female", Salary: 90000, dateofbirth: new Date("March 19, 1996") },
+        { name: "Balaji", gender: "Male", Salary: 400000, dateofbirth: new Date("December 19, 1996") },
+        { name: "JP", gender: "Male", Salary: 50000, dateofbirth: new Date("Janvaruy 19, 1996") },
+        { name: "Sparsh", gender: "Male", Salary: 550000, dateofbirth: new Date("Febravary 19, 1996") }
+        ];
+    $scope.employee = employee;
+    $scope.rowLimit = 3;
+});
+

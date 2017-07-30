@@ -2,14 +2,61 @@
 <html xmlns="http://www.w3.org/1999/xhtml" >   <!-- initialing the Module MyModule in the head  -->
 <head>
     <title></title>
-    <script src="Scripts/angular.js"></script>                        <!--including the angular-->    
+    <script src="Scripts/angular.js"></script>                         <!--including the angular-->    
     <script src="Scripts/Script.js"></script>                          <!--including the external script file-->
 </head>
-<body ng-app="MyModule">
+<body ng-app="MyModule" >
+
+    <!--<h1>AngularJS play Ground</h1>-->
+
+    <!--Implementing the filers in Angular-->
+    <div ng-controller="AngularFilters">
+
+
+        <center>
+
+            Rows to display : <input type="number" step="1" min="1" max="20" ng-model="rowLimit"  />  
+                <!--creating an input field to get the number of rows to be displayed-->
+                <!--since we needto update the row limit to the model also we put it in ng-model-->
+                <!--step tells up the incrementation by r decrementation by a value 1-->
+                <!--min and max are the number preset min and max values of the row to be displayed-->
+                <!--since we hard coded the default valuwe for  row limit as 3 in the controller in script file it starts with that value-->
+            
+            <table border="1" width="50%">   <!--just setting the border and the width of the table-->
+                <thead >
+                    <tr>
+                        <th>name</th>
+                        <th>gender</th>
+                        <th>salary (number filter)</th>
+                        <th>salary (currency filter)</th>
+                        <th>Date Of Birth</th>
+                    </tr>
+
+                </thead>
+                <tbody>
+                    <tr ng-repeat="emp in employee | limitTo:rowLimit:0">       <!--making the loop to stop at the row limit which we got from the input-->
+                        <td>{{emp.name | uppercase}}</td>                       <!--converts ti UPPER CASE-->
+                        <td>{{emp.gender | lowercase}}</td>                     <!--converts to lowerr case-->
+                        <td>{{emp.Salary | number:2}}</td>                      <!--convert the decimals to two decimal places-->
+
+                        <td>{{emp.Salary | currency:"Rs. ": 1}}</td>            <!--by default the currency symboml is $- doalr so we set our custom currency
+                                                                     by default the decimal placed for the currency filter is 2 so we are setting it to one-->
+                        
+                        <td>{{emp.dateofbirth | date: "dd/ MMM / yyyy"}}</td>   <!--by default the date also includes the time stamp also
+                                                                                    date filter and its custom format can be used to customise the view-->
+
+                    </tr>
+                </tbody>
+            </table>
+        </center>
+
+    </div>
+
 
 
     <!-- Implementing the handling event  -->
-        <table ng-controller="HandlingEvent">
+    <div ng-controller="HandlingEvent">
+        <table>
             <thead>
                 <tr>
                     <th>name</th>
@@ -25,21 +72,20 @@
                     <td>{{technology.like}}</td>
                     <td>{{technology.dislike}}</td>
                     <td>
-                        <input type="button" value="like" ng-click="incrementlike(technology)" />
+                        <input type="button" value="like"    ng-click="incrementlike(technology)" />
                         <input type="button" value="dislike" ng-click="incrementdislike(technology)" />
-
+                        <input type="button" value="reset"   ng-click="resetlikeAndDislike(technology)" />
                     </td>
                 </tr>
             </tbody>
         </table>
- 
+    </div>
 
     <br /><br /><br />
 
 
-
-    <!-- Implementing the two way data binding function -->
-    <div ng-controller="MyController2">
+    <!-- Implementing the two way data binding function --> 
+    <div ng-controller="TwoWayDataBinding">
         <table>
             <tr>
                 <td>First Name :</td>
@@ -50,7 +96,7 @@
                 <td> <input type="text" ng-model="employees.designation" /> </td>s
             </tr>
             <tr>
-                <td>]Date of Joining :</td>
+                <td>Date of Joining :</td>
                 <td> <input text="text" ng-model="employees.date" /> </td>
             </tr>
             <tr>
@@ -84,7 +130,7 @@
     <br /><br /><br />
 
 
-    <table ng-controller="MyController">
+    <table ng-controller="Table">
         <!--initialioxing the MyController controller of the angular in the html
         specifically to the region inside the table-->
         <thead>
@@ -108,8 +154,7 @@
 
 
 
-
-    <div ng-controller="MyController1">
+    <div ng-controller="NestedArrays">
         <!--initialioxing the MyController1 controller of the angular in the html
           specifically to the region inside the div tag-->
 
