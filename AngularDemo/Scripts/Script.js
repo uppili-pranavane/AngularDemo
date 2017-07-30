@@ -114,6 +114,7 @@ app.controller("AngularFilters", function ($scope) {
         { name: "Balaji", gender: "Male", Salary: 400000, dateofbirth: new Date("December 19, 1996") },
         { name: "JP", gender: "Male", Salary: 50000, dateofbirth: new Date("January 19, 1996") },
         { name: "Sparsh", gender: "Male", Salary: 550000, dateofbirth: new Date("February 19, 1996") }
+
         ];
     $scope.employee = employee;
     $scope.rowLimit = 3;
