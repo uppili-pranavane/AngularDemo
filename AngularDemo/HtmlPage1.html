@@ -14,13 +14,27 @@
 
 
         <center>
+            
+            Rows to display : <input type="number" step="1" min="1" max="20" ng-model="rowLimit" />      
+          
+                                                                        
 
-            Rows to display : <input type="number" step="1" min="1" max="20" ng-model="rowLimit"  />  
                 <!--creating an input field to get the number of rows to be displayed-->
                 <!--since we needto update the row limit to the model also we put it in ng-model-->
                 <!--step tells up the incrementation by r decrementation by a value 1-->
                 <!--min and max are the number preset min and max values of the row to be displayed-->
                 <!--since we hard coded the default valuwe for  row limit as 3 in the controller in script file it starts with that value-->
+
+            Sort table with : <select ng-model="sortColumn">        <!-- to get the input frok the user on which the data to be sorted  to tjhe ng-model -->
+                <option value="+name"> Name Asc</option>           <!--the thing to be displayed is Name Desc but the value to be sent os +name-->     
+                <option value="-name"> Name Desc</option>           <!--the column name in the controller prefixed with - is descending order-->
+                <option value="+Salary"> Salary Asc</option>         <!--the column name in the controller prefixed with + is ascending order-->
+                <option value="-Salary"> Salary Desc</option>
+                <option value="+gender"> Gender Asc</option>
+                <option value="-gender"> Gender Desc</option>
+                <option value="+dateofbirth"> Date of Birth Asc</option>
+                <option value="-dateofbirth"> Date of Birth Desc</option>
+            </select> 
             
             <table border="1" width="50%">   <!--just setting the border and the width of the table-->
                 <thead >
@@ -34,16 +48,21 @@
 
                 </thead>
                 <tbody>
-                    <tr ng-repeat="emp in employee | limitTo:rowLimit:0">       <!--making the loop to stop at the row limit which we got from the input-->
+                    <tr ng-repeat="emp in employee | orderBy:sortColumn | limitTo:rowLimit ">
+                        <!--making the loop to stop at the row limit which we got from the input we use limitTo -->
+                        <!--to sort the datas in the table according to the input given orderBy-->
+
                         <td>{{emp.name | uppercase}}</td>                       <!--converts ti UPPER CASE-->
                         <td>{{emp.gender | lowercase}}</td>                     <!--converts to lowerr case-->
                         <td>{{emp.Salary | number:2}}</td>                      <!--convert the decimals to two decimal places-->
 
-                        <td>{{emp.Salary | currency:"Rs. ": 1}}</td>            <!--by default the currency symboml is $- doalr so we set our custom currency
-                                                                     by default the decimal placed for the currency filter is 2 so we are setting it to one-->
-                        
-                        <td>{{emp.dateofbirth | date: "dd/ MMM / yyyy"}}</td>   <!--by default the date also includes the time stamp also
-                                                                                    date filter and its custom format can be used to customise the view-->
+                        <td>{{emp.Salary | currency:"Rs. ": 1}}</td>
+                        <!--by default the currency symboml is $- doalr so we set our custom currency
+        by default the decimal placed for the currency filter is 2 so we are setting it to one-->
+
+                        <td>{{emp.dateofbirth | date: "dd/ MMM / yyyy"}}</td>
+                        <!--by default the date also includes the time stamp also
+        date filter and its custom format can be used to customise the view-->
 
                     </tr>
                 </tbody>
