@@ -3,7 +3,9 @@
 <head>
     <title></title>
     <script src="Scripts/angular.js"></script>                         <!--including the angular-->    
-    <script src="Scripts/Script.js"></script>                          <!--including the external script file-->
+    <script src="Scripts/Script.js"></script>  <!--including the external script file-->
+    <link href="Style.css" rel="stylesheet" />      
+                      
 </head>
 <body ng-app="MyModule" >
 
@@ -14,6 +16,10 @@
 
 
         <center>
+            Seacrh by value : <input type="text" placeholder=" Universal search" ng-model="searchTerm"/>              <!--fro universal search-->
+            <br /> <br/>
+           <!-- Search By Name :  <input type="text" placeholder="search by name" ng-model="searchTerm.name" />-->    <!--to to search by a specific column do so SearchTerm.column_name-->
+            <br /><br />
             
             Rows to display : <input type="number" step="1" min="1" max="20" ng-model="rowLimit" />      
           
@@ -25,7 +31,7 @@
                 <!--min and max are the number preset min and max values of the row to be displayed-->
                 <!--since we hard coded the default valuwe for  row limit as 3 in the controller in script file it starts with that value-->
 
-            Sort table with : <select ng-model="sortColumn">        <!-- to get the input frok the user on which the data to be sorted  to tjhe ng-model -->
+            Sort table with : <select ng-model="sortColumn" placeholder="--Select--">        <!-- to get the input frok the user on which the data to be sorted  to tjhe ng-model -->
                 <option value="+name"> Name Asc</option>           <!--the thing to be displayed is Name Desc but the value to be sent os +name-->     
                 <option value="-name"> Name Desc</option>           <!--the column name in the controller prefixed with - is descending order-->
                 <option value="+Salary"> Salary Asc</option>         <!--the column name in the controller prefixed with + is ascending order-->
@@ -39,16 +45,26 @@
             <table border="1" width="50%">   <!--just setting the border and the width of the table-->
                 <thead >
                     <tr>
-                        <th>name</th>
-                        <th>gender</th>
-                        <th>salary (number filter)</th>
-                        <th>salary (currency filter)</th>
-                        <th>Date Of Birth</th>
+                        <th ng-click="sortData('name')">
+                            name <div ng-class="getSortClass('name')"></div>
+                        </th>
+                        <th ng-click="sortData('gender')">
+                        gender <div ng-class="getSortClass('gender')"></div>
+                        </th>
+                        <th>
+                        salary (number filter)
+                        </th>
+                        <th ng-click="sortData('Salary')">
+                        salary (currency filter) <div ng-class="getSortClass('Salary')"></div>
+                        </th>
+                        <th ng-click="sortData('dateofbirth')">
+                            Date Of Birth <div ng-class="getSortClass('dateofbirth')"></div>
+                        </th>   
                     </tr>
 
                 </thead>
                 <tbody>
-                    <tr ng-repeat="emp in employee | orderBy:sortColumn | limitTo:rowLimit ">
+                    <tr ng-repeat="emp in employee |filter:searchTerm | orderBy:sortColumn:reverseSort | limitTo:rowLimit ">
                         <!--making the loop to stop at the row limit which we got from the input we use limitTo -->
                         <!--to sort the datas in the table according to the input given orderBy-->
 

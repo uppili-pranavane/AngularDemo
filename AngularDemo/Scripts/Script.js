@@ -118,6 +118,31 @@ app.controller("AngularFilters", function ($scope) {
         ];
     $scope.employee = employee;
     $scope.rowLimit = 3;
-    $scopesortColumn = "+name";
+    $scope.sortColumn = "name";
+    $scope.reverseSort = false;    //this variable tells asc r desc if flase reverse is false so asc
+
+    $scope.sortData = function(column) {          // this fucntion gets a attribute the column to be sorted
+                                                   // to set data to the resverseSort fuction
+        $scope.reverseSort = ($scoper.$sortColumn == column) ? !$scope.reverseSort : false;  //if the same column is selected the value in the reverse sort is noted
+                                                                                    // true to false and false to true
+                                                                                    //if not then the column is selected for the first time so the reverseSort value is aassinged to false i.e asc
+        $scope.sortColumn = column;  //then assings the selected column to the sortColumn attribute
+    }
+
+
+
+    $scope.getSortClass = function(column) { //this fuction id fr the arrow mark specifying the order of sort based on the value of reverseSort
+        if($scope.sortColumn == column)     //checks if the selected column and the sortColumn matched 
+        {
+            return ($scope.reverseSort) ? 'arrow-down' : 'arrow-up';   //if reverseSort is true arrow-down for desc if flase arroup up fr asc
+            // the arrow-up and arrow-down are the css properties in the style.css file
+            // in the style.css we define with a . here sont use the prefixing dot
+        }
+
+        return ''; //checks if the selected column and the sortColumn not matched returns a empty string
+    }
+
+
+
 });
 
